@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+       <div class="container">
+            <div class="p-5 text-center">
+                <form class="wrap" action="{% url 'optic:search' %}" method="get" style="display: inline-block">
+                    {% csrf_token %}
+                   <div class="search d-flex">
+                      <input type="text" name="query" class="form-control bg-white" placeholder="" autofocus>
+                       <button type="submit" class="btn btn-primary ml-1">Search</button>
+                   </div>
+                </form>
+            </div>
+       </div>
+
+{% endblock content %}
+
+
+
+

@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+
+{% block content %}
+    <div class="p-5 text-center">
+        <form class="wrap" action="{% url 'optic:search' %}" method="get" style="display: inline-block">
+            {% csrf_token %}
+           <div class="search d-flex">
+              <input type="text" name="query" class="form-control bg-white" value="{{ query }}" autofocus>
+               <button type="submit" class="btn btn-primary ml-1">Search</button>
+           </div>
+        </form>
+    </div>
+
+   <div class="container mb-3" style="width: 50%; margin: auto">
+        {% for searchResult in data %}
+            <div class="bg-white mt-3 rounded p-3">
+                <h5 class="text-primary">{{ searchResult.title }}</h5>
+                <p>
+                    <a class="text-success" href="{{ searchResult.link }}">{{ searchResult.link }}</a>
+                </p>
+                <p class="text-dark">
+                    {{ searchResult.extract }}
+                </p>
+            </div>
+        {% endfor %}
+   </div>
+
+
+{% endblock content %}
+
+
